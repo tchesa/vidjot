@@ -25,7 +25,7 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 
 // body parser middleware
-app.use(bodyParser.urlencoded({ extend: false }))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json()) // parse application/json
 
 // method override middleware
@@ -34,8 +34,8 @@ app.use(methodOverride('_method'))
 // express session middleware
 app.use(session({
   secret: 'secret',
-  reasve: true,
-  saveUnitialized: true
+  resave: true,
+  saveUninitialized: true
 }))
 
 // connect flash middleware
