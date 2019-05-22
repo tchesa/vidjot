@@ -5,13 +5,12 @@ const bodyParser = require('body-parser')
 
 const app = express()
 
-// Map global promise - get rid of warning
-mongoose.Promise = global.Promise
 // connect to mongoose
+mongoose.Promise = global.Promise // Map global promise - get rid of warning
 mongoose.connect('mongodb://localhost/vidjot-dev', {
   useNewUrlParser: true
 }).then(() => {
-  console.log('MongoDB Connected...')
+  console.log('mongodb connected...')
 }).catch(err => console.log(err))
 
 // load idea model
@@ -51,6 +50,15 @@ app.get('/ideas', (req, res) => {
 // add idea form
 app.get('/ideas/add', (req, res) => {
   res.render('ideas/add')
+})
+
+// edit idea form
+app.get('/ideas/edit/:id', (req, res) => {
+  Idea.findOne({
+    _id: req.params.id
+  }).then(idea => {
+    res.render('ideas/edit', {idea: idea})
+  })
 })
 
 // process form - handle post idea
