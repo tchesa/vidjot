@@ -6,10 +6,14 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
 const session = require('express-session')
+const passport = require('passport')
 
 // load routes
 const ideas = require('./routes/ideas')
 const users = require('./routes/users')
+
+// passport config
+require('./config/passport')(passport)
 
 const app = express()
 
