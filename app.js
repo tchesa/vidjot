@@ -21,7 +21,7 @@ const Idea = mongoose.model('ideas')
 app.engine('handlebars', exphbs({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 
-// Index Route
+// index route
 app.get('/', (req, res) => {
   const title = 'Welcome'
   res.render('index', {
@@ -29,9 +29,15 @@ app.get('/', (req, res) => {
   })
 })
 
-// About Route
+// about route
 app.get('/about', (req, res) => {
   res.render('about')
+})
+
+// add idea form
+app.get('/ideas/add', (req, res) => {
+
+  res.render('ideas/add')
 })
 
 const port = 5000
