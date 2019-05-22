@@ -20,6 +20,7 @@
   "homepage": "https://github.com/tchesa/vidjot#readme",
   "dependencies": {
     "express": "^4.17.0",
+    "express-handlebars": "^3.1.0",
     "nodemon": "^1.19.0"
   }
 }
