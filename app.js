@@ -7,11 +7,15 @@ const app = express()
 // Map global promise - get rid of warning
 mongoose.Promise = global.Promise
 // connect to mongoose
-mongoose.connect('mongodb://localhost:5001/vidjot-dev', {
+mongoose.connect('mongodb://localhost/vidjot-dev', {
   useNewUrlParser: true
 }).then(() => {
   console.log('MongoDB Connected...')
 }).catch(err => console.log(err))
+
+// load idea model
+require('./models/idea')
+const Idea = mongoose.model('ideas')
 
 // handlebars middleware
 app.engine('handlebars', exphbs({defaultLayout: 'main'}))
